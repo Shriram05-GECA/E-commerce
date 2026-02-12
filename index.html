@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - Your One-Stop E-Commerce Store</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 text-primary" href="index.html">
+                <i class="bi bi-shop me-2"></i>ShopEasy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="products.html?category=electronics">Electronics</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=fashion">Fashion</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=home">Home & Kitchen</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=books">Books</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=sports">Sports & Fitness</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="nav-link me-3 position-relative" data-bs-toggle="offcanvas" data-bs-target="#searchOffcanvas">
+                        <i class="bi bi-search fs-5"></i>
+                    </a>
+                    <a href="#" class="nav-link me-3 position-relative">
+                        <i class="bi bi-heart fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="wishlist-count">
+                            3
+                        </span>
+                    </a>
+                    <a href="cart.html" class="nav-link me-3 position-relative">
+                        <i class="bi bi-cart3 fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">
+                            5
+                        </span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
+                            <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-person fs-5"></i>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus me-2"></i>Register</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Account Settings</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Offcanvas -->
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="searchOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Search Products</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="input-group">
+                <input type="text" class="form-control form-control-lg" placeholder="Search for products, brands, categories...">
+                <button class="btn btn-primary" type="button">
+                    <i class="bi bi-search"></i> Search
+                </button>
+            </div>
+            <div class="mt-3">
+                <h6>Popular Searches:</h6>
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                    <a href="#" class="badge bg-light text-dark p-2 text-decoration-none">Laptops</a>
+                    <a href="#" class="badge bg-light text-dark p-2 text-decoration-none">Smartphones</a>
+                    <a href="#" class="badge bg-light text-dark p-2 text-decoration-none">Headphones</a>
+                    <a href="#" class="badge bg-light text-dark p-2 text-decoration-none">Smart Watches</a>
+                    <a href="#" class="badge bg-light text-dark p-2 text-decoration-none">Running Shoes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-image" style="background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');"></div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">Summer Sale Up to 50% Off</h1>
+                        <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Don't miss out on our biggest sale of the year!</p>
+                        <a href="products.html" class="btn btn-primary btn-lg mt-3 animate__animated animate__fadeInUp animate__delay-2s">Shop Now</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-image" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');"></div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-4 fw-bold">New Arrivals</h1>
+                        <p class="lead">Discover the latest trends in fashion and electronics</p>
+                        <a href="products.html" class="btn btn-primary btn-lg mt-3">Explore New Products</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-image" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');"></div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 class="display-4 fw-bold">Free Shipping Worldwide</h1>
+                        <p class="lead">On all orders over $50. No hidden charges!</p>
+                        <a href="products.html" class="btn btn-primary btn-lg mt-3">Start Shopping</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-truck fs-1 text-primary"></i>
+                        </div>
+                        <h5>Free Shipping</h5>
+                        <p class="text-muted">On orders over $50</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-arrow-counterclockwise fs-1 text-primary"></i>
+                        </div>
+                        <h5>30-Day Returns</h5>
+                        <p class="text-muted">Hassle-free returns</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-shield-check fs-1 text-primary"></i>
+                        </div>
+                        <h5>Secure Payment</h5>
+                        <p class="text-muted">100% secure payment</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-card text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-headset fs-1 text-primary"></i>
+                        </div>
+                        <h5>24/7 Support</h5>
+                        <p class="text-muted">Dedicated support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title text-center">Featured Products</h2>
+                    <p class="text-center text-muted">Check out our most popular products</p>
+                </div>
+            </div>
+            <div class="row g-4" id="featured-products">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            <div class="text-center mt-5">
+                <a href="products.html" class="btn btn-outline-primary btn-lg">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title text-center">Shop by Category</h2>
+                    <p class="text-center text-muted">Browse through our wide range of categories</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <a href="products.html?category=electronics" class="category-card">
+                        <div class="card border-0 shadow-sm h-100">
+                            <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="Electronics">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Electronics</h5>
+                                <p class="text-muted">Smartphones, Laptops, TVs</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="products.html?category=fashion" class="category-card">
+                        <div class="card border-0 shadow-sm h-100">
+                            <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="Fashion">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Fashion</h5>
+                                <p class="text-muted">Clothing, Shoes, Accessories</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="products.html?category=home" class="category-card">
+                        <div class="card border-0 shadow-sm h-100">
+                            <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="Home & Kitchen">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Home & Kitchen</h5>
+                                <p class="text-muted">Furniture, Appliances, Cookware</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="products.html?category=books" class="category-card">
+                        <div class="card border-0 shadow-sm h-100">
+                            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                                 class="card-img-top" alt="Books">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Books</h5>
+                                <p class="text-muted">Fiction, Non-fiction, Educational</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3 class="mb-3">Subscribe to Our Newsletter</h3>
+                    <p class="mb-0">Get the latest updates on new products and upcoming sales</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Enter your email">
+                        <button class="btn btn-light" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-4">
+                        <i class="bi bi-shop me-2"></i>ShopEasy
+                    </h5>
+                    <p>Your one-stop destination for all shopping needs. Quality products at affordable prices with fast delivery.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="products.html" class="text-white-50 text-decoration-none">Products</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-4">Customer Service</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">FAQ</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Shipping Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Return Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-4">Contact Info</h5>
+                    <p><i class="bi bi-geo-alt me-2"></i> 123 Shopping Street, Cityville, ST 12345</p>
+                    <p><i class="bi bi-telephone me-2"></i> +1 (555) 123-4567</p>
+                    <p><i class="bi bi-envelope me-2"></i> info@shopeasy.com</p>
+                </div>
+            </div>
+            <hr class="bg-secondary">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 ShopEasy. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Payment Methods" height="30" class="ms-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Payment Methods" height="30" class="ms-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/196/196565.png" alt="Payment Methods" height="30" class="ms-2">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script>
+        // Load featured products
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFeaturedProducts();
+        });
+    </script>
+</body>
+</html>
