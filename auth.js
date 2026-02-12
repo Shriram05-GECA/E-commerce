@@ -3,9 +3,17 @@
 // Demo credentials
 const DEMO_CREDENTIALS = {
     email: 'demo@shopeasy.com',
-    password: 'Demo@123'
+    password: '123456' // 6-digit numeric
 };
-
+// Inside DOMContentLoaded
+passwordInput.addEventListener('input', function(e) {
+    // Restrict to digits only
+    this.value = this.value.replace(/[^0-9]/g, '');
+    if (this.value.length > 6) {
+        this.value = this.value.slice(0, 6);
+    }
+    validatePassword();
+});
 // Login attempts tracking
 let loginAttempts = parseInt(localStorage.getItem('loginAttempts')) || 0;
 const MAX_ATTEMPTS = 3;
