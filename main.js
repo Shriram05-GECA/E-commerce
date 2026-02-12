@@ -100,6 +100,23 @@ const products = [
     }
 ];
 
+// Load products for ticker
+function loadProductTicker() {
+    const tickerContent = document.querySelector('.ticker-content');
+    if (!tickerContent) return;
+    
+    // Duplicate products for seamless scrolling
+    const tickerProducts = [...products, ...products]; 
+    tickerContent.innerHTML = tickerProducts.map(product => `
+        <div class="ticker-item">
+            <img src="${product.image}" alt="${product.name}">
+            <span class="fw-bold me-2">${product.name}</span>
+            <span class="text-warning">$${product.price}</span>
+        </div>
+    `).join('');
+}
+
+// Call in DOMContentLoaded
 // Cart Management
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
