@@ -111,7 +111,51 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section --><!-- Add this section after the navbar and before the hero section -->
+<!-- Auto-scrolling product showcase header -->
+<div class="product-ticker bg-dark text-white py-2 overflow-hidden">
+    <div class="ticker-wrapper d-flex align-items-center">
+        <div class="ticker-content d-flex">
+            <!-- Products will be inserted via JS -->
+        </div>
+    </div>
+</div>
+
+<style>
+    .product-ticker {
+        margin-top: 76px;
+        white-space: nowrap;
+        position: relative;
+        z-index: 1000;
+    }
+    .ticker-wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+    .ticker-content {
+        display: inline-flex;
+        animation: scrollProducts 20s linear infinite;
+    }
+    .ticker-content:hover {
+        animation-play-state: paused;
+    }
+    .ticker-item {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 30px;
+    }
+    .ticker-item img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    @keyframes scrollProducts {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+</style>
     <section class="hero-section">
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
