@@ -291,6 +291,29 @@ function showToast(message, type = 'info') {
     toast.addEventListener('hidden.bs.toast', function() {
         toast.remove();
     });
+}function validatePassword() {
+    const passwordInput = document.getElementById('password');
+    const feedback = document.getElementById('passwordFeedback');
+    
+    if (!passwordInput) return false;
+    
+    const password = passwordInput.value;
+    
+    if (password === '') {
+        passwordInput.classList.remove('is-valid');
+        passwordInput.classList.add('is-invalid');
+        if (feedback) feedback.textContent = 'Password is required.';
+        return false;
+    } else if (!/^\d{6}$/.test(password)) {
+        passwordInput.classList.remove('is-valid');
+        passwordInput.classList.add('is-invalid');
+        if (feedback) feedback.textContent = 'Password must be exactly 6 digits (numbers only).';
+        return false;
+    } else {
+        passwordInput.classList.remove('is-invalid');
+        passwordInput.classList.add('is-valid');
+        return true;
+    }
 }
 
 // Add shake animation
