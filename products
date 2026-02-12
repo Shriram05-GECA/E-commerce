@@ -1,0 +1,108 @@
+// products.js
+let currentPage = 1;
+const productsPerPage = 8;
+let filteredProducts = [...products];
+
+function displayProducts() {
+    const container = document.getElementById('products-container');
+    const start = (currentPage - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    const paginatedProducts = filteredProducts.slice(start, end);
+    
+    container.innerHTML = paginatedProducts.map(product => createProductCard(product)).join('');
+    document.getElementById('productCount').innerHTML = `Showing ${start+1}-${Math.min(end, filteredProducts.length)} of ${filteredProducts.length} products`;
+    setupPagination();
+}
+
+function setupPagination() {
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    const pagination = document.getElementById('pagination');
+    let html = '';
+    
+    html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                <a class="page-link" href="#" data-page="${currentPage-1}">Previous</a>
+             </li>`;
+    
+    for (let i = 1; i <= totalPages; i++) {
+        html += `<li class="page-item ${i === currentPage ? 'active' : ''}">
+                    <a class="page-link" href="#" data-page="${i}">${i}</a>
+                 </li>`;
+    }
+    
+    html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                <a class="page-link" href="#" data-page="${currentPage+1}">Next</a>
+             </li>`;
+    
+    pagination.innerHTML = html;
+    
+    document.querySelectorAll('.page-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = parseInt(this.dataset.page);
+            if (!isNaN(page) && page >= 1 && page <= totalPages) {
+                currentPage = page;
+                displayProducts();
+            }
+        });
+    });
+}
+
+// Filtering logic
+function applyFilters() {
+    const selectedCategories = Array.from(document.querySelectorAll('.filter-category:checked')).map(cb => cb.value);
+    const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+    const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+    const minRating = parseFloat(document.getElementById('ratingFilter').value) || 0;
+    
+    filteredProducts = products.filter(product => {
+        const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+        const priceMatch = product.price >= minPrice && product.price <= maxPrice;
+        const ratingMatch = product.rating >= minRating;
+        return categoryMatch && priceMatch && ratingMatch;
+    });
+    
+    currentPage = 1;
+    displayProducts();
+}
+
+function clearFilters() {
+    document.querySelectorAll('.filter-category').forEach(cb => cb.checked = false);
+    document.getElementById('minPrice').value = '';
+    document.getElementById('maxPrice').value = '';
+    document.getElementById('ratingFilter').value = '0';
+    filteredProducts = [...products];
+    currentPage = 1;
+    displayProducts();
+}
+
+// Sorting
+document.getElementById('sortSelect').addEventListener('change', function() {
+    const sortBy = this.value;
+    switch (sortBy) {
+        case 'price-asc':
+            filteredProducts.sort((a,b) => a.price - b.price);
+            break;
+        case 'price-desc':
+            filteredProducts.sort((a,b) => b.price - a.price);
+            break;
+        case 'rating-desc':
+            filteredProducts.sort((a,b) => b.rating - a.rating);
+            break;
+        case 'name-asc':
+            filteredProducts.sort((a,b) => a.name.localeCompare(b.name));
+            break;
+        default:
+            filteredProducts.sort((a,b) => a.id - b.id);
+    }
+    currentPage = 1;
+    displayProducts();
+});
+
+document.getElementById('applyFilters').addEventListener('click', applyFilters);
+document.getElementById('clearFilters').addEventListener('click', clearFilters);
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    filteredProducts = [...products];
+    displayProducts();
+});
