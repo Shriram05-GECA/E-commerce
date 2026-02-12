@@ -98,6 +98,58 @@ const products = [
         badge: "Sale",
         stock: 7
     }
+    // Add to products array in main.js
+const products = [
+    // ... existing products
+    {
+        id: 9,
+        name: "Puma Men's Running Shoes",
+        price: 89.99,
+        oldPrice: 119.99,
+        category: "fashion",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        rating: 4.6,
+        description: "Lightweight running shoes with superior cushioning – Puma.",
+        badge: "Sale",
+        stock: 18
+    },
+    {
+        id: 10,
+        name: "Puma Casual Sneakers",
+        price: 69.99,
+        oldPrice: null,
+        category: "fashion",
+        image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        rating: 4.7,
+        description: "Comfortable everyday sneakers from Puma.",
+        badge: "New",
+        stock: 25
+    },
+    {
+        id: 11,
+        name: "Puma Sports Hoodie",
+        price: 59.99,
+        oldPrice: 79.99,
+        category: "fashion",
+        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        rating: 4.4,
+        description: "Warm and stylish hoodie for sports and casual wear.",
+        badge: "Sale",
+        stock: 30
+    },
+    {
+        id: 12,
+        name: "Puma Backpack",
+        price: 49.99,
+        oldPrice: 64.99,
+        category: "fashion",
+        image: "https://images.unsplash.com/photo-1622560480605-d6c1b2790912?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        rating: 4.5,
+        description: "Durable and spacious backpack for daily use.",
+        badge: null,
+        stock: 22
+    }
+];
 ];
 
 // Load products for ticker
